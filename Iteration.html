@@ -377,8 +377,13 @@ summary {
 <li><a href="#lets-review-napoleon-dynamite">Let’s review Napoleon Dynamite</a></li>
 <li><a href="#mean-scoping-example">Mean scoping example</a></li>
 <li><a href="#functions-as-arguments">Functions as arguments</a></li>
+<li><a href="#learning-assessment">Learning Assessment</a></li>
 </ul></li>
-<li><a href="#iteration-and-list-columns">Iteration and list columns</a></li>
+<li><a href="#iteration-and-list-columns">Iteration and list columns</a><ul>
+<li><a href="#lists">Lists</a></li>
+<li><a href="#for-loop"><code>for</code> loop</a></li>
+<li><a href="#lets-try-map">Let’s try map</a></li>
+</ul></li>
 <li><a href="#simulation">Simulation</a></li>
 </ul>
 </div>
@@ -410,12 +415,11 @@ summary {
 <pre class="r"><code>x_vec = rnorm(30, mean = 5, sd = 3)
 
 (x_vec - mean(x_vec)) / sd(x_vec)</code></pre>
-<pre><code>##  [1]  0.278358709 -1.022639484 -0.166664556  1.585315261 -0.348492797
-##  [6]  0.347384780  1.053392749  0.407503717  0.638620436  0.308956427
-## [11] -1.306762441 -1.350522009  0.006477393  0.632969487  0.347276510
-## [16] -0.705847654 -0.128944056 -0.676184685  0.721706545  0.828036556
-## [21] -0.112465712  0.844756840 -1.724928496 -2.012752056 -0.063038784
-## [26]  1.800735926  1.805307463 -1.616350158 -0.453137751  0.081931838</code></pre>
+<pre><code>##  [1]  2.30523341 -1.08215977  0.45886323  0.32679496  0.14728538 -1.64547115
+##  [7] -0.15707520  0.29163800 -0.03958643  0.94363849  0.72835065  1.09699100
+## [13] -0.82107671 -0.55124830  0.58202882  0.34645469  0.19714530  0.13763409
+## [19] -2.03567826  0.51456517  0.45992527 -1.88422543 -1.12621293 -0.14145758
+## [25]  0.43862169  1.36784293 -0.02616985  0.84323855 -1.73224702  0.05635699</code></pre>
 <p>I want a funciton to compute z_scores</p>
 <pre class="r"><code>z_scores = function(x) {
   if (!is.numeric(x)) {
@@ -429,12 +433,11 @@ summary {
 }
 
 z_scores(x_vec)</code></pre>
-<pre><code>##  [1]  0.278358709 -1.022639484 -0.166664556  1.585315261 -0.348492797
-##  [6]  0.347384780  1.053392749  0.407503717  0.638620436  0.308956427
-## [11] -1.306762441 -1.350522009  0.006477393  0.632969487  0.347276510
-## [16] -0.705847654 -0.128944056 -0.676184685  0.721706545  0.828036556
-## [21] -0.112465712  0.844756840 -1.724928496 -2.012752056 -0.063038784
-## [26]  1.800735926  1.805307463 -1.616350158 -0.453137751  0.081931838</code></pre>
+<pre><code>##  [1]  2.30523341 -1.08215977  0.45886323  0.32679496  0.14728538 -1.64547115
+##  [7] -0.15707520  0.29163800 -0.03958643  0.94363849  0.72835065  1.09699100
+## [13] -0.82107671 -0.55124830  0.58202882  0.34645469  0.19714530  0.13763409
+## [19] -2.03567826  0.51456517  0.45992527 -1.88422543 -1.12621293 -0.14145758
+## [25]  0.43862169  1.36784293 -0.02616985  0.84323855 -1.73224702  0.05635699</code></pre>
 </div>
 <div id="multiple-outputs" class="section level2">
 <h2>Multiple outputs</h2>
@@ -459,14 +462,14 @@ mean_and_sd(x_vec)</code></pre>
 <pre><code>## # A tibble: 1 x 2
 ##    mean    sd
 ##   &lt;dbl&gt; &lt;dbl&gt;
-## 1  6.05  2.69</code></pre>
+## 1  5.19  3.48</code></pre>
 <pre class="r"><code>#Update x_vec
 x_vec = rnorm(1000)
 mean_and_sd(x_vec)</code></pre>
 <pre><code>## # A tibble: 1 x 2
-##      mean    sd
-##     &lt;dbl&gt; &lt;dbl&gt;
-## 1 -0.0391 0.992</code></pre>
+##        mean    sd
+##       &lt;dbl&gt; &lt;dbl&gt;
+## 1 -0.000613  1.02</code></pre>
 </div>
 <div id="multiple-inputs" class="section level2">
 <h2>Multiple inputs</h2>
@@ -483,7 +486,7 @@ sim_data %&gt;%
 <pre><code>## # A tibble: 1 x 2
 ##    mean    sd
 ##   &lt;dbl&gt; &lt;dbl&gt;
-## 1  3.82  3.13</code></pre>
+## 1  4.15  2.60</code></pre>
 <p>I’d like to do this with a function</p>
 <pre class="r"><code>sim_mean_sd = function(n , mu, sigma) {
   sim_data = 
@@ -502,12 +505,12 @@ sim_mean_sd(100, 6, 3)</code></pre>
 <pre><code>## # A tibble: 1 x 2
 ##    mean    sd
 ##   &lt;dbl&gt; &lt;dbl&gt;
-## 1  5.91  3.13</code></pre>
+## 1  6.41  2.63</code></pre>
 <pre class="r"><code>sim_mean_sd(n = 1000, mu = 20, sigma = 3)   # use name matching</code></pre>
 <pre><code>## # A tibble: 1 x 2
 ##    mean    sd
 ##   &lt;dbl&gt; &lt;dbl&gt;
-## 1  20.1  2.98</code></pre>
+## 1  20.0  3.08</code></pre>
 </div>
 <div id="lets-review-napoleon-dynamite" class="section level2">
 <h2>Let’s review Napoleon Dynamite</h2>
@@ -653,10 +656,6 @@ f(x = y)</code></pre>
 </div>
 <div id="functions-as-arguments" class="section level2">
 <h2>Functions as arguments</h2>
-</div>
-</div>
-<div id="iteration-and-list-columns" class="section level1">
-<h1>Iteration and list columns</h1>
 <pre class="r"><code>my_summary = function(x, summ_func) {
   summ_func(x)
 }
@@ -664,15 +663,207 @@ f(x = y)</code></pre>
 x_vec = rnorm(100, 3, 7)
 
 mean(x_vec)</code></pre>
-<pre><code>## [1] 3.581002</code></pre>
+<pre><code>## [1] 3.69022</code></pre>
 <pre class="r"><code>median(x_vec)</code></pre>
-<pre><code>## [1] 3.68664</code></pre>
+<pre><code>## [1] 3.307633</code></pre>
 <pre class="r"><code>my_summary(x_vec, mean)</code></pre>
-<pre><code>## [1] 3.581002</code></pre>
+<pre><code>## [1] 3.69022</code></pre>
 <pre class="r"><code>my_summary(x_vec, median)</code></pre>
-<pre><code>## [1] 3.68664</code></pre>
+<pre><code>## [1] 3.307633</code></pre>
 <pre class="r"><code>my_summary(x_vec, IQR)</code></pre>
-<pre><code>## [1] 8.703618</code></pre>
+<pre><code>## [1] 9.093937</code></pre>
+</div>
+<div id="learning-assessment" class="section level2">
+<h2>Learning Assessment</h2>
+<pre class="r"><code>lotr_load_and_tidy = function(path, range, movie_name) {
+  
+  df = readxl::read_excel(path, range = range) %&gt;%
+    janitor::clean_names() %&gt;%
+    gather(key = sex, value = words, female:male) %&gt;%
+    mutate(race = str_to_lower(race),
+           movie = movie_name)
+  
+  df
+  
+}
+
+lotr_tidy = 
+  bind_rows(
+    lotr_load_and_tidy(&quot;./data/LotR_Words.xlsx&quot;, &quot;B3:D6&quot;, &quot;fellowship_ring&quot;),
+    lotr_load_and_tidy(&quot;./data/LotR_Words.xlsx&quot;, &quot;F3:H6&quot;, &quot;two_towers&quot;),
+    lotr_load_and_tidy(&quot;./data/LotR_Words.xlsx&quot;, &quot;J3:L6&quot;, &quot;return_king&quot;)) %&gt;%
+  select(movie, everything()) </code></pre>
+</div>
+</div>
+<div id="iteration-and-list-columns" class="section level1">
+<h1>Iteration and list columns</h1>
+<div id="lists" class="section level2">
+<h2>Lists</h2>
+<p>Example of lists</p>
+<pre class="r"><code>list(a = rnorm(10), b = c(&quot;My&quot;, &quot;name&quot;, &quot;is&quot;, &quot;Linh&quot;), c = summary(runif(100)))</code></pre>
+<pre><code>## $a
+##  [1]  0.02961503  1.53025724 -0.30921392 -1.01522280  0.51394230 -0.27183733
+##  [7]  0.33569984 -0.10324165  0.47784276  0.76339266
+## 
+## $b
+## [1] &quot;My&quot;   &quot;name&quot; &quot;is&quot;   &quot;Linh&quot;
+## 
+## $c
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##  0.0119  0.2345  0.4423  0.4715  0.7165  0.9808</code></pre>
+<p>Data frame is a special kind of list</p>
+<pre class="r"><code>data_frame(
+  a = rnorm(4),
+  b = c(&quot;My&quot;, &quot;name&quot;, &quot;is&quot;, &quot;Linh&quot;),
+  c = sample(c(TRUE, FALSE), 4, replace = TRUE)
+)</code></pre>
+<pre><code>## Warning: `data_frame()` is deprecated as of tibble 1.1.0.
+## Please use `tibble()` instead.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_warnings()` to see where this warning was generated.</code></pre>
+<pre><code>## # A tibble: 4 x 3
+##        a b     c    
+##    &lt;dbl&gt; &lt;chr&gt; &lt;lgl&gt;
+## 1 -0.646 My    FALSE
+## 2  0.459 name  TRUE 
+## 3  0.458 is    FALSE
+## 4  0.121 Linh  FALSE</code></pre>
+<p>You can put anything in a list</p>
+<pre class="r"><code>vec_numeric = 5:8
+vec_logical = c(TRUE, TRUE, FALSE, TRUE, FALSE, FALSE)
+matrix = matrix(1:8, nrow = 2, ncol = 4)
+summary = summary(rnorm(100))
+
+list(vec_numeric, vec_logical, matrix, summary)</code></pre>
+<pre><code>## [[1]]
+## [1] 5 6 7 8
+## 
+## [[2]]
+## [1]  TRUE  TRUE FALSE  TRUE FALSE FALSE
+## 
+## [[3]]
+##      [,1] [,2] [,3] [,4]
+## [1,]    1    3    5    7
+## [2,]    2    4    6    8
+## 
+## [[4]]
+##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+## -2.84805 -0.65016  0.08423  0.01580  0.92153  1.82186</code></pre>
+<pre class="r"><code>list = list(
+ vec_numeric = 5:8,
+ vec_logical = c(TRUE, TRUE, FALSE, TRUE, FALSE, FALSE),
+ matrix = matrix(1:8, nrow = 2, ncol = 4),
+ summary = summary(rnorm(100))
+)
+
+list</code></pre>
+<pre><code>## $vec_numeric
+## [1] 5 6 7 8
+## 
+## $vec_logical
+## [1]  TRUE  TRUE FALSE  TRUE FALSE FALSE
+## 
+## $matrix
+##      [,1] [,2] [,3] [,4]
+## [1,]    1    3    5    7
+## [2,]    2    4    6    8
+## 
+## $summary
+##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+## -2.43147 -0.64691  0.16221  0.08056  0.75406  2.45654</code></pre>
+<pre class="r"><code>list$vec_logical</code></pre>
+<pre><code>## [1]  TRUE  TRUE FALSE  TRUE FALSE FALSE</code></pre>
+<pre class="r"><code>list$vec_numeric</code></pre>
+<pre><code>## [1] 5 6 7 8</code></pre>
+<pre class="r"><code>list[[1]]</code></pre>
+<pre><code>## [1] 5 6 7 8</code></pre>
+<pre class="r"><code>mean(list[[&quot;vec_numeric&quot;]])</code></pre>
+<pre><code>## [1] 6.5</code></pre>
+</div>
+<div id="for-loop" class="section level2">
+<h2><code>for</code> loop</h2>
+<p>Create a new list</p>
+<pre class="r"><code>list_rnorm =
+  list(
+    a = rnorm(20, mean = 3, sd = 1),
+    b = rnorm(30, mean = 0, sd = 5),
+    c = rnorm(40, mean = 10, sd = 0.2),
+    d = rnorm(20, mean = -3, sd = 1)
+  )
+
+list_rnorm</code></pre>
+<pre><code>## $a
+##  [1] 3.223966 4.289954 2.285552 3.454845 2.630299 4.098490 1.459503 3.300890
+##  [9] 2.609138 3.901478 2.419814 3.511252 3.513994 3.403042 2.929966 3.767083
+## [17] 2.100460 2.345135 3.317316 2.844433
+## 
+## $b
+##  [1]   2.30801351  -7.06097183   3.12337153   3.33735271  -4.83541178
+##  [6]  -4.75820502  -4.98803703   6.89686325   5.31219766   0.99004329
+## [11] -13.09717878   6.92338147  -7.04423141   1.05051012  -9.01989108
+## [16] -14.16894095  -1.89974166  -5.57066228   4.48274894  -0.09647561
+## [21]  -6.77669636  -6.83638665   3.25548446  -2.70350300  12.69768972
+## [26]  -0.91008275  -2.65668940  -2.69665833  -1.84292874  -2.66761585
+## 
+## $c
+##  [1] 10.129316  9.860609  9.827916 10.021673  9.812416  9.912323  9.925314
+##  [8] 10.063489  9.897419 10.204825 10.127009 10.148696  9.940926 10.251485
+## [15]  9.968726  9.807758 10.022536 10.041684 10.006679  9.963414 10.033946
+## [22]  9.924211  9.994343  9.817766  9.852001  9.980895 10.477511 10.245667
+## [29] 10.136691 10.153491  9.772006 10.166699 10.058246 10.150101 10.063364
+## [36]  9.994547 10.329235 10.247967 10.020351 10.199851
+## 
+## $d
+##  [1] -4.296014 -2.201084 -3.241326 -2.307363 -2.324917 -3.494035 -2.956304
+##  [8] -3.688280 -1.686605 -2.408550 -3.661041 -2.620258 -1.955088 -3.164447
+## [15] -2.760939 -3.155270 -4.689745 -4.216200 -3.790031 -2.674175</code></pre>
+<p>I can apply mean and sd function to each list element</p>
+<pre class="r"><code>mean_and_sd = function(x) {
+  if (!is.numeric(x)) {
+    stop(&quot;Input must be numeric&quot;)
+  }
+  if (length(x) &lt; 3) {
+    stop(&quot;Input must have at least three numbers&quot;)
+  }
+  mean_x = mean(x)
+  sd_x = sd(x)
+  
+tibble(
+    mean = mean_x,
+    sd = sd_x
+  )
+}
+
+mean_and_sd(list_rnorm[[1]])</code></pre>
+<pre><code>## # A tibble: 1 x 2
+##    mean    sd
+##   &lt;dbl&gt; &lt;dbl&gt;
+## 1  3.07 0.729</code></pre>
+<pre class="r"><code>mean_and_sd(list_rnorm[[2]])</code></pre>
+<pre><code>## # A tibble: 1 x 2
+##    mean    sd
+##   &lt;dbl&gt; &lt;dbl&gt;
+## 1 -1.64  6.01</code></pre>
+<pre class="r"><code>mean_and_sd(list_rnorm[[3]])</code></pre>
+<pre><code>## # A tibble: 1 x 2
+##    mean    sd
+##   &lt;dbl&gt; &lt;dbl&gt;
+## 1  10.0 0.158</code></pre>
+<pre class="r"><code>mean_and_sd(list_rnorm[[4]])</code></pre>
+<pre><code>## # A tibble: 1 x 2
+##    mean    sd
+##   &lt;dbl&gt; &lt;dbl&gt;
+## 1 -3.06 0.823</code></pre>
+<p>Let’s use a for loop:</p>
+<pre class="r"><code>output = vector(&quot;list&quot;, length = 4)
+
+for (i in 1:4) {
+  output[[i]] = mean_and_sd(list_rnorm[[i]])
+}</code></pre>
+</div>
+<div id="lets-try-map" class="section level2">
+<h2>Let’s try map</h2>
+</div>
 </div>
 <div id="simulation" class="section level1">
 <h1>Simulation</h1>

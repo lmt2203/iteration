@@ -248,7 +248,7 @@ f(x = y)
 ```
 
 ## Functions as arguments
-# Iteration and list columns
+
 ```{r}
 my_summary = function(x, summ_func) {
   summ_func(x)
@@ -263,6 +263,130 @@ my_summary(x_vec, mean)
 my_summary(x_vec, median)
 my_summary(x_vec, IQR)
 ```
+
+## Learning Assessment
+
+```{r}
+lotr_load_and_tidy = function(path, range, movie_name) {
+  
+  df = readxl::read_excel(path, range = range) %>%
+    janitor::clean_names() %>%
+    gather(key = sex, value = words, female:male) %>%
+    mutate(race = str_to_lower(race),
+           movie = movie_name)
+  
+  df
+  
+}
+
+lotr_tidy = 
+  bind_rows(
+    lotr_load_and_tidy("./data/LotR_Words.xlsx", "B3:D6", "fellowship_ring"),
+    lotr_load_and_tidy("./data/LotR_Words.xlsx", "F3:H6", "two_towers"),
+    lotr_load_and_tidy("./data/LotR_Words.xlsx", "J3:L6", "return_king")) %>%
+  select(movie, everything()) 
+```
+
+
+# Iteration and list columns
+
+## Lists
+
+Example of lists
+```{r}
+list(a = rnorm(10), b = c("My", "name", "is", "Linh"), c = summary(runif(100)))
+```
+
+Data frame is a special kind of list
+
+```{r}
+data_frame(
+  a = rnorm(4),
+  b = c("My", "name", "is", "Linh"),
+  c = sample(c(TRUE, FALSE), 4, replace = TRUE)
+)
+```
+
+You can put anything in a list
+
+```{r}
+vec_numeric = 5:8
+vec_logical = c(TRUE, TRUE, FALSE, TRUE, FALSE, FALSE)
+matrix = matrix(1:8, nrow = 2, ncol = 4)
+summary = summary(rnorm(100))
+
+list(vec_numeric, vec_logical, matrix, summary)
+```
+
+```{r}
+list = list(
+ vec_numeric = 5:8,
+ vec_logical = c(TRUE, TRUE, FALSE, TRUE, FALSE, FALSE),
+ matrix = matrix(1:8, nrow = 2, ncol = 4),
+ summary = summary(rnorm(100))
+)
+
+list
+list$vec_logical
+list$vec_numeric
+list[[1]]
+mean(list[["vec_numeric"]])
+
+```
+
+## `for` loop
+
+Create a new list
+
+```{r}
+list_rnorm =
+  list(
+    a = rnorm(20, mean = 3, sd = 1),
+    b = rnorm(30, mean = 0, sd = 5),
+    c = rnorm(40, mean = 10, sd = 0.2),
+    d = rnorm(20, mean = -3, sd = 1)
+  )
+
+list_rnorm
+
+```
+
+I can apply mean and sd function to each list element
+
+```{r}
+mean_and_sd = function(x) {
+  if (!is.numeric(x)) {
+    stop("Input must be numeric")
+  }
+  if (length(x) < 3) {
+    stop("Input must have at least three numbers")
+  }
+  mean_x = mean(x)
+  sd_x = sd(x)
+  
+tibble(
+    mean = mean_x,
+    sd = sd_x
+  )
+}
+
+mean_and_sd(list_rnorm[[1]])
+mean_and_sd(list_rnorm[[2]])
+mean_and_sd(list_rnorm[[3]])
+mean_and_sd(list_rnorm[[4]])
+```
+
+Let's use a for loop:
+
+```{r}
+output = vector("list", length = 4)
+
+for (i in 1:4) {
+  output[[i]] = mean_and_sd(list_rnorm[[i]])
+}
+```
+
+## Let's try map
 
 
 # Simulation
