@@ -415,11 +415,11 @@ summary {
 <pre class="r"><code>x_vec = rnorm(30, mean = 5, sd = 3)
 
 (x_vec - mean(x_vec)) / sd(x_vec)</code></pre>
-<pre><code>##  [1]  2.30523341 -1.08215977  0.45886323  0.32679496  0.14728538 -1.64547115
-##  [7] -0.15707520  0.29163800 -0.03958643  0.94363849  0.72835065  1.09699100
-## [13] -0.82107671 -0.55124830  0.58202882  0.34645469  0.19714530  0.13763409
-## [19] -2.03567826  0.51456517  0.45992527 -1.88422543 -1.12621293 -0.14145758
-## [25]  0.43862169  1.36784293 -0.02616985  0.84323855 -1.73224702  0.05635699</code></pre>
+<pre><code>##  [1] -1.57013027  0.67190879  0.53933571  0.12360365 -0.90899957  0.64388274
+##  [7] -0.74019885 -1.24817760 -1.02289611  0.13418061 -0.07989616  1.23123070
+## [13]  1.26515110 -0.36087199  1.86860544 -1.61265815 -0.34421450  0.91724276
+## [19]  1.84224260 -0.64408410  1.39567438 -0.85660009 -0.13464959  1.07356755
+## [25] -1.38320165 -0.25791952 -1.13726598  0.20337637  0.26079490  0.13096683</code></pre>
 <p>I want a funciton to compute z_scores</p>
 <pre class="r"><code>z_scores = function(x) {
   if (!is.numeric(x)) {
@@ -433,11 +433,11 @@ summary {
 }
 
 z_scores(x_vec)</code></pre>
-<pre><code>##  [1]  2.30523341 -1.08215977  0.45886323  0.32679496  0.14728538 -1.64547115
-##  [7] -0.15707520  0.29163800 -0.03958643  0.94363849  0.72835065  1.09699100
-## [13] -0.82107671 -0.55124830  0.58202882  0.34645469  0.19714530  0.13763409
-## [19] -2.03567826  0.51456517  0.45992527 -1.88422543 -1.12621293 -0.14145758
-## [25]  0.43862169  1.36784293 -0.02616985  0.84323855 -1.73224702  0.05635699</code></pre>
+<pre><code>##  [1] -1.57013027  0.67190879  0.53933571  0.12360365 -0.90899957  0.64388274
+##  [7] -0.74019885 -1.24817760 -1.02289611  0.13418061 -0.07989616  1.23123070
+## [13]  1.26515110 -0.36087199  1.86860544 -1.61265815 -0.34421450  0.91724276
+## [19]  1.84224260 -0.64408410  1.39567438 -0.85660009 -0.13464959  1.07356755
+## [25] -1.38320165 -0.25791952 -1.13726598  0.20337637  0.26079490  0.13096683</code></pre>
 </div>
 <div id="multiple-outputs" class="section level2">
 <h2>Multiple outputs</h2>
@@ -462,14 +462,14 @@ mean_and_sd(x_vec)</code></pre>
 <pre><code>## # A tibble: 1 x 2
 ##    mean    sd
 ##   &lt;dbl&gt; &lt;dbl&gt;
-## 1  5.19  3.48</code></pre>
+## 1  4.27  3.03</code></pre>
 <pre class="r"><code>#Update x_vec
 x_vec = rnorm(1000)
 mean_and_sd(x_vec)</code></pre>
 <pre><code>## # A tibble: 1 x 2
-##        mean    sd
-##       &lt;dbl&gt; &lt;dbl&gt;
-## 1 -0.000613  1.02</code></pre>
+##      mean    sd
+##     &lt;dbl&gt; &lt;dbl&gt;
+## 1 -0.0172 0.986</code></pre>
 </div>
 <div id="multiple-inputs" class="section level2">
 <h2>Multiple inputs</h2>
@@ -486,7 +486,7 @@ sim_data %&gt;%
 <pre><code>## # A tibble: 1 x 2
 ##    mean    sd
 ##   &lt;dbl&gt; &lt;dbl&gt;
-## 1  4.15  2.60</code></pre>
+## 1  4.13  2.95</code></pre>
 <p>I’d like to do this with a function</p>
 <pre class="r"><code>sim_mean_sd = function(n , mu, sigma) {
   sim_data = 
@@ -505,12 +505,12 @@ sim_mean_sd(100, 6, 3)</code></pre>
 <pre><code>## # A tibble: 1 x 2
 ##    mean    sd
 ##   &lt;dbl&gt; &lt;dbl&gt;
-## 1  6.41  2.63</code></pre>
+## 1  6.41  3.27</code></pre>
 <pre class="r"><code>sim_mean_sd(n = 1000, mu = 20, sigma = 3)   # use name matching</code></pre>
 <pre><code>## # A tibble: 1 x 2
 ##    mean    sd
 ##   &lt;dbl&gt; &lt;dbl&gt;
-## 1  20.0  3.08</code></pre>
+## 1  20.1  3.06</code></pre>
 </div>
 <div id="lets-review-napoleon-dynamite" class="section level2">
 <h2>Let’s review Napoleon Dynamite</h2>
@@ -663,15 +663,15 @@ f(x = y)</code></pre>
 x_vec = rnorm(100, 3, 7)
 
 mean(x_vec)</code></pre>
-<pre><code>## [1] 3.69022</code></pre>
+<pre><code>## [1] 3.227573</code></pre>
 <pre class="r"><code>median(x_vec)</code></pre>
-<pre><code>## [1] 3.307633</code></pre>
+<pre><code>## [1] 3.424027</code></pre>
 <pre class="r"><code>my_summary(x_vec, mean)</code></pre>
-<pre><code>## [1] 3.69022</code></pre>
+<pre><code>## [1] 3.227573</code></pre>
 <pre class="r"><code>my_summary(x_vec, median)</code></pre>
-<pre><code>## [1] 3.307633</code></pre>
+<pre><code>## [1] 3.424027</code></pre>
 <pre class="r"><code>my_summary(x_vec, IQR)</code></pre>
-<pre><code>## [1] 9.093937</code></pre>
+<pre><code>## [1] 10.3406</code></pre>
 </div>
 <div id="learning-assessment" class="section level2">
 <h2>Learning Assessment</h2>
@@ -702,15 +702,15 @@ lotr_tidy =
 <p>Example of lists</p>
 <pre class="r"><code>list(a = rnorm(10), b = c(&quot;My&quot;, &quot;name&quot;, &quot;is&quot;, &quot;Linh&quot;), c = summary(runif(100)))</code></pre>
 <pre><code>## $a
-##  [1]  0.02961503  1.53025724 -0.30921392 -1.01522280  0.51394230 -0.27183733
-##  [7]  0.33569984 -0.10324165  0.47784276  0.76339266
+##  [1] -0.00753264  1.56125950 -0.10615589 -0.29173227 -0.59439783 -0.53145537
+##  [7]  0.43717559  0.54159952  1.49117335  1.71437329
 ## 
 ## $b
 ## [1] &quot;My&quot;   &quot;name&quot; &quot;is&quot;   &quot;Linh&quot;
 ## 
 ## $c
-##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.0119  0.2345  0.4423  0.4715  0.7165  0.9808</code></pre>
+##      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+## 0.0002396 0.3133343 0.5370762 0.5154467 0.7404785 0.9890395</code></pre>
 <p>Data frame is a special kind of list</p>
 <pre class="r"><code>data_frame(
   a = rnorm(4),
@@ -724,10 +724,10 @@ lotr_tidy =
 <pre><code>## # A tibble: 4 x 3
 ##        a b     c    
 ##    &lt;dbl&gt; &lt;chr&gt; &lt;lgl&gt;
-## 1 -0.646 My    FALSE
-## 2  0.459 name  TRUE 
-## 3  0.458 is    FALSE
-## 4  0.121 Linh  FALSE</code></pre>
+## 1 -1.66  My    FALSE
+## 2  1.72  name  FALSE
+## 3 -0.278 is    TRUE 
+## 4  0.108 Linh  FALSE</code></pre>
 <p>You can put anything in a list</p>
 <pre class="r"><code>vec_numeric = 5:8
 vec_logical = c(TRUE, TRUE, FALSE, TRUE, FALSE, FALSE)
@@ -747,8 +747,8 @@ list(vec_numeric, vec_logical, matrix, summary)</code></pre>
 ## [2,]    2    4    6    8
 ## 
 ## [[4]]
-##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
-## -2.84805 -0.65016  0.08423  0.01580  0.92153  1.82186</code></pre>
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+## -2.5902 -0.7071 -0.1566 -0.1020  0.4999  2.5510</code></pre>
 <pre class="r"><code>list = list(
  vec_numeric = 5:8,
  vec_logical = c(TRUE, TRUE, FALSE, TRUE, FALSE, FALSE),
@@ -770,7 +770,7 @@ list</code></pre>
 ## 
 ## $summary
 ##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
-## -2.43147 -0.64691  0.16221  0.08056  0.75406  2.45654</code></pre>
+## -2.07307 -0.69875  0.03274  0.06041  0.74835  2.96150</code></pre>
 <pre class="r"><code>list$vec_logical</code></pre>
 <pre><code>## [1]  TRUE  TRUE FALSE  TRUE FALSE FALSE</code></pre>
 <pre class="r"><code>list$vec_numeric</code></pre>
@@ -793,30 +793,29 @@ list</code></pre>
 
 list_rnorm</code></pre>
 <pre><code>## $a
-##  [1] 3.223966 4.289954 2.285552 3.454845 2.630299 4.098490 1.459503 3.300890
-##  [9] 2.609138 3.901478 2.419814 3.511252 3.513994 3.403042 2.929966 3.767083
-## [17] 2.100460 2.345135 3.317316 2.844433
+##  [1] 3.0633673 0.3711878 2.6010237 2.7956875 2.7424392 1.6437058 3.3487808
+##  [8] 3.8444249 4.4054670 2.2634193 2.4498036 4.0299748 3.0807405 2.3862105
+## [15] 2.2038648 3.8217196 3.4489064 3.4370627 2.3000899 3.5687057
 ## 
 ## $b
-##  [1]   2.30801351  -7.06097183   3.12337153   3.33735271  -4.83541178
-##  [6]  -4.75820502  -4.98803703   6.89686325   5.31219766   0.99004329
-## [11] -13.09717878   6.92338147  -7.04423141   1.05051012  -9.01989108
-## [16] -14.16894095  -1.89974166  -5.57066228   4.48274894  -0.09647561
-## [21]  -6.77669636  -6.83638665   3.25548446  -2.70350300  12.69768972
-## [26]  -0.91008275  -2.65668940  -2.69665833  -1.84292874  -2.66761585
+##  [1] -5.73100758  3.26511251 -1.76371858 -0.36924997  3.85010859 -8.38174808
+##  [7] -3.81548168 -2.35652522 -6.61457025 -0.52845984 -5.32495588 -6.38923639
+## [13]  0.56465857  0.61350184 -4.82547886 -5.82811666 -4.70923469  3.75910694
+## [19] -7.15404468 -0.70675375  8.08879331 -0.01720061 -4.43722233  6.42864663
+## [25]  1.85950384 -6.14877004  7.81001972  2.12978229 -3.13566498 13.33488451
 ## 
 ## $c
-##  [1] 10.129316  9.860609  9.827916 10.021673  9.812416  9.912323  9.925314
-##  [8] 10.063489  9.897419 10.204825 10.127009 10.148696  9.940926 10.251485
-## [15]  9.968726  9.807758 10.022536 10.041684 10.006679  9.963414 10.033946
-## [22]  9.924211  9.994343  9.817766  9.852001  9.980895 10.477511 10.245667
-## [29] 10.136691 10.153491  9.772006 10.166699 10.058246 10.150101 10.063364
-## [36]  9.994547 10.329235 10.247967 10.020351 10.199851
+##  [1]  9.714381  9.960841 10.314256  9.846151 10.211992  9.795901 10.064377
+##  [8]  9.927245 10.391288 10.056966  9.840307 10.218190  9.750909  9.832861
+## [15]  9.924711  9.937921 10.157742 10.135230  9.858797  9.984346 10.094217
+## [22] 10.089419  9.639047 10.113842 10.253528 10.222541  9.959622  9.821843
+## [29]  9.609001  9.768252 10.068184 10.318980 10.105993 10.121050 10.119408
+## [36] 10.038888 10.006395 10.065036  9.859834  9.820618
 ## 
 ## $d
-##  [1] -4.296014 -2.201084 -3.241326 -2.307363 -2.324917 -3.494035 -2.956304
-##  [8] -3.688280 -1.686605 -2.408550 -3.661041 -2.620258 -1.955088 -3.164447
-## [15] -2.760939 -3.155270 -4.689745 -4.216200 -3.790031 -2.674175</code></pre>
+##  [1] -2.182663 -2.558762 -2.576210 -2.920777 -3.313014 -3.478315 -4.024504
+##  [8] -3.216323 -2.190132 -2.970559 -3.041395 -3.540683 -1.940736 -2.738806
+## [15] -3.550137 -3.299013 -4.208781 -4.316501 -3.259403 -5.276241</code></pre>
 <p>I can apply mean and sd function to each list element</p>
 <pre class="r"><code>mean_and_sd = function(x) {
   if (!is.numeric(x)) {
@@ -838,22 +837,22 @@ mean_and_sd(list_rnorm[[1]])</code></pre>
 <pre><code>## # A tibble: 1 x 2
 ##    mean    sd
 ##   &lt;dbl&gt; &lt;dbl&gt;
-## 1  3.07 0.729</code></pre>
+## 1  2.89 0.929</code></pre>
 <pre class="r"><code>mean_and_sd(list_rnorm[[2]])</code></pre>
 <pre><code>## # A tibble: 1 x 2
-##    mean    sd
-##   &lt;dbl&gt; &lt;dbl&gt;
-## 1 -1.64  6.01</code></pre>
+##     mean    sd
+##    &lt;dbl&gt; &lt;dbl&gt;
+## 1 -0.884  5.28</code></pre>
 <pre class="r"><code>mean_and_sd(list_rnorm[[3]])</code></pre>
 <pre><code>## # A tibble: 1 x 2
 ##    mean    sd
 ##   &lt;dbl&gt; &lt;dbl&gt;
-## 1  10.0 0.158</code></pre>
+## 1  10.0 0.190</code></pre>
 <pre class="r"><code>mean_and_sd(list_rnorm[[4]])</code></pre>
 <pre><code>## # A tibble: 1 x 2
 ##    mean    sd
 ##   &lt;dbl&gt; &lt;dbl&gt;
-## 1 -3.06 0.823</code></pre>
+## 1 -3.23 0.807</code></pre>
 <p>Let’s use a for loop:</p>
 <pre class="r"><code>output = vector(&quot;list&quot;, length = 4)
 
@@ -863,6 +862,32 @@ for (i in 1:4) {
 </div>
 <div id="lets-try-map" class="section level2">
 <h2>Let’s try map</h2>
+<pre class="r"><code>output = map(list_rnorm, mean_and_sd)  #output = map(input, f)</code></pre>
+<p>What if you want a different function?</p>
+<pre class="r"><code>map(list_rnorm, median)</code></pre>
+<pre><code>## $a
+## [1] 2.929527
+## 
+## $b
+## [1] -1.235236
+## 
+## $c
+## [1] 10.02264
+## 
+## $d
+## [1] -3.237863</code></pre>
+<pre class="r"><code>map(list_rnorm, IQR)</code></pre>
+<pre><code>## $a
+## [1] 1.114176
+## 
+## $b
+## [1] 7.262299
+## 
+## $c
+## [1] 0.2751289
+## 
+## $d
+## [1] 0.84489</code></pre>
 </div>
 </div>
 <div id="simulation" class="section level1">

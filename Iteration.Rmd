@@ -388,6 +388,18 @@ for (i in 1:4) {
 
 ## Let's try map
 
+```{r}
+output = map(list_rnorm, mean_and_sd)  #output = map(input, f)
+```
+
+What if you want a different function?
+
+```{r}
+map(list_rnorm, median)
+
+map(list_rnorm, IQR)
+```
+
 
 # Simulation
 
